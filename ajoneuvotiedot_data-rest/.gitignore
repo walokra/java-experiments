@@ -1,0 +1,12 @@
+.gradle
+.idea
+build/*
+testdb.*
+out
+target
+/build/
+/bin/
+.project
+.settings
+.classpath
+.DS_Store

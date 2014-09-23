@@ -1,0 +1,60 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://repo.spring.io/libs-release" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.6.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+sourceCompatibility = '1.7'
+
+apply plugin: 'war'
+
+war {
+    baseName = 'ajoneuvotiedot-war'
+    version =  '0.1.0'
+	archiveName = 'ROOT.war'
+	destinationDir = file('webapps')
+}
+
+// add a source for 3rd party libraries.
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+}
+
+// specify the name for our JAR artifact
+jar {
+    baseName = 'ajotekntiedot-boot'
+    version =  '0.1.0'
+}
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.postgresql:postgresql:9.3-1102-jdbc41")
+    
+    // manage and monitor your application using HTTP endpoints, with JMX or even by remote shell (SSH or Telnet)
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+
+    // no need for embedded Tomcat when running in container
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+}
+
+// allow to run a Gradle build without requiring that it's installed on system
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
