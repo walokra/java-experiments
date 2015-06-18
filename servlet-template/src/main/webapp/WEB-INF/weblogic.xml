@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://xmlns.oracle.com/weblogic/weblogic-web-app http://xmlns.oracle.com/weblogic/weblogic-web-app/1.5/weblogic-web-app.xsd">
+
+	<weblogic-version>12.1.2</weblogic-version>
+
+	<session-descriptor>
+		<cookie-path>/servlet-template</cookie-path>
+		<persistent-store-type>memory</persistent-store-type>
+	</session-descriptor>
+	<context-root>servlet-template</context-root>
+	
+	<container-descriptor>
+	    <prefer-application-packages>
+			<package-name>org.slf4j</package-name>
+			<package-name>org.apache.commons.*</package-name>
+ 	  	</prefer-application-packages> 
+ 
+	   <prefer-application-resources> 
+			<resource-name>org/slf4j/impl/StaticLoggerBinder.class</resource-name>
+	   </prefer-application-resources>
+	</container-descriptor>
+
+	<fast-swap>
+		<enabled>false</enabled>
+	</fast-swap>
+
+</weblogic-web-app>
